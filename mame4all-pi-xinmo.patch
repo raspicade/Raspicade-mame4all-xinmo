@@ -1,0 +1,368 @@
+diff -crB -x .git mame4all-pi/Makefile mame4all-pi-xinmo/Makefile
+*** mame4all-pi/Makefile	Wed Apr  9 17:06:43 2014
+--- mame4all-pi-xinmo/Makefile	Sun Mar 30 08:12:14 2014
+***************
+*** 18,27 ****
+  # compiler, linker and utilities
+  MD = @mkdir
+  RM = rm -f
+! CC  = arm-linux-gnueabihf-gcc
+! CPP = arm-linux-gnueabihf-g++
+  AS  = as
+! LD  = arm-linux-gnueabihf-g++
+  STRIP = strip
+  
+  EMULATOR = $(TARGET)$(EXE)
+--- 18,27 ----
+  # compiler, linker and utilities
+  MD = @mkdir
+  RM = rm -f
+! CC  = gcc
+! CPP = g++
+  AS  = as
+! LD  = g++
+  STRIP = strip
+  
+  EMULATOR = $(TARGET)$(EXE)
+diff -crB -x .git mame4all-pi/Makefile.debug mame4all-pi-xinmo/Makefile.debug
+*** mame4all-pi/Makefile.debug	Wed Apr  9 17:06:43 2014
+--- mame4all-pi-xinmo/Makefile.debug	Wed Apr  9 17:53:43 2014
+***************
+*** 18,30 ****
+  # compiler, linker and utilities
+  MD = @mkdir
+  RM = rm -f
+! CC     = arm-linux-gnueabihf-gcc
+! CPP    = arm-linux-gnueabihf-g++
+  AS  = as
+! LD     = arm-linux-gnueabihf-g++
+  STRIP  = strip
+  
+- 
+  EMULATOR = $(TARGET)$(EXE)
+  
+  #DEFS = -DGP2X -DLSB_FIRST -DALIGN_INTS -DALIGN_SHORTS -DINLINE="static __inline" -Dasm="__asm__ __volatile__" -DMAME_UNDERCLOCK -DMAME_FASTSOUND -DENABLE_AUTOFIRE -DBIGCASE
+--- 18,35 ----
+  # compiler, linker and utilities
+  MD = @mkdir
+  RM = rm -f
+! #CC     = arm-linux-gnueabihf-gcc
+! #CPP    = arm-linux-gnueabihf-g++
+! #AS  = as
+! #LD     = arm-linux-gnueabihf-g++
+! #STRIP  = strip
+! 
+! CC     = gcc
+! CPP    = g++
+  AS  = as
+! LD     = g++
+  STRIP  = strip
+  
+  EMULATOR = $(TARGET)$(EXE)
+  
+  #DEFS = -DGP2X -DLSB_FIRST -DALIGN_INTS -DALIGN_SHORTS -DINLINE="static __inline" -Dasm="__asm__ __volatile__" -DMAME_UNDERCLOCK -DMAME_FASTSOUND -DENABLE_AUTOFIRE -DBIGCASE
+Only in mame4all-pi-xinmo: mame
+diff -crB -x .git mame4all-pi/src/inptport.cpp mame4all-pi-xinmo/src/inptport.cpp
+*** mame4all-pi/src/inptport.cpp	Wed Apr  9 17:06:45 2014
+--- mame4all-pi-xinmo/src/inptport.cpp	Sun Mar 30 11:01:56 2014
+***************
+*** 195,200 ****
+--- 195,206 ----
+  	{ IPT_BUTTON14            | IPF_PLAYER2, "P1 Button 14",   SEQ_DEF_1(JOYCODE_1_BUTTON14) },
+  	{ IPT_BUTTON15            | IPF_PLAYER2, "P1 Button 15",   SEQ_DEF_1(JOYCODE_1_BUTTON15) },
+  	{ IPT_BUTTON16            | IPF_PLAYER2, "P1 Button 16",   SEQ_DEF_1(JOYCODE_1_BUTTON16) },
++ 	{ IPT_BUTTON17            | IPF_PLAYER2, "P1 Button 17",   SEQ_DEF_1(JOYCODE_1_BUTTON17) },
++ 	{ IPT_BUTTON18            | IPF_PLAYER2, "P1 Button 18",   SEQ_DEF_1(JOYCODE_1_BUTTON18) },
++ 	{ IPT_BUTTON19            | IPF_PLAYER2, "P1 Button 19",   SEQ_DEF_1(JOYCODE_1_BUTTON19) },
++ 	{ IPT_BUTTON20            | IPF_PLAYER2, "P1 Button 20",   SEQ_DEF_1(JOYCODE_1_BUTTON20) },
++ 	{ IPT_BUTTON21            | IPF_PLAYER2, "P1 Button 21",   SEQ_DEF_1(JOYCODE_1_BUTTON21) },
++ 	{ IPT_BUTTON22            | IPF_PLAYER2, "P1 Button 22",   SEQ_DEF_1(JOYCODE_1_BUTTON22) },
+  	{ IPT_JOYSTICKRIGHT_UP    | IPF_PLAYER1, "P1 Right/Up",    SEQ_DEF_3(KEYCODE_I, CODE_OR, JOYCODE_1_BUTTON4) },
+  	{ IPT_JOYSTICKRIGHT_DOWN  | IPF_PLAYER1, "P1 Right/Down",  SEQ_DEF_3(KEYCODE_K, CODE_OR, JOYCODE_1_BUTTON2) },
+  	{ IPT_JOYSTICKRIGHT_LEFT  | IPF_PLAYER1, "P1 Right/Left",  SEQ_DEF_3(KEYCODE_J, CODE_OR, JOYCODE_1_BUTTON3) },
+***************
+*** 224,229 ****
+--- 230,241 ----
+  	{ IPT_BUTTON14            | IPF_PLAYER2, "P2 Button 14",   SEQ_DEF_1(JOYCODE_2_BUTTON14) },
+  	{ IPT_BUTTON15            | IPF_PLAYER2, "P2 Button 15",   SEQ_DEF_1(JOYCODE_2_BUTTON15) },
+  	{ IPT_BUTTON16            | IPF_PLAYER2, "P2 Button 16",   SEQ_DEF_1(JOYCODE_2_BUTTON16) },
++ 	{ IPT_BUTTON17            | IPF_PLAYER2, "P2 Button 17",   SEQ_DEF_1(JOYCODE_2_BUTTON17) },
++ 	{ IPT_BUTTON18            | IPF_PLAYER2, "P2 Button 18",   SEQ_DEF_1(JOYCODE_2_BUTTON18) },
++ 	{ IPT_BUTTON19            | IPF_PLAYER2, "P2 Button 19",   SEQ_DEF_1(JOYCODE_2_BUTTON19) },
++ 	{ IPT_BUTTON20            | IPF_PLAYER2, "P2 Button 20",   SEQ_DEF_1(JOYCODE_2_BUTTON20) },
++ 	{ IPT_BUTTON21            | IPF_PLAYER2, "P2 Button 21",   SEQ_DEF_1(JOYCODE_2_BUTTON21) },
++ 	{ IPT_BUTTON22            | IPF_PLAYER2, "P2 Button 22",   SEQ_DEF_1(JOYCODE_2_BUTTON22) },
+  	{ IPT_JOYSTICKRIGHT_UP    | IPF_PLAYER2, "P2 Right/Up",    SEQ_DEF_0 },
+  	{ IPT_JOYSTICKRIGHT_DOWN  | IPF_PLAYER2, "P2 Right/Down",  SEQ_DEF_0 },
+  	{ IPT_JOYSTICKRIGHT_LEFT  | IPF_PLAYER2, "P2 Right/Left",  SEQ_DEF_0 },
+diff -crB -x .git mame4all-pi/src/inptport.h mame4all-pi-xinmo/src/inptport.h
+*** mame4all-pi/src/inptport.h	Wed Apr  9 17:06:45 2014
+--- mame4all-pi-xinmo/src/inptport.h	Sun Mar 30 11:05:03 2014
+***************
+*** 48,54 ****
+  	IPT_JOYSTICKLEFT_UP, IPT_JOYSTICKLEFT_DOWN, IPT_JOYSTICKLEFT_LEFT, IPT_JOYSTICKLEFT_RIGHT,
+  	IPT_BUTTON1, IPT_BUTTON2, IPT_BUTTON3, IPT_BUTTON4,	/* action buttons */
+  	IPT_BUTTON5, IPT_BUTTON6, IPT_BUTTON7, IPT_BUTTON8, IPT_BUTTON9, IPT_BUTTON10,
+! 	IPT_BUTTON11, IPT_BUTTON12, IPT_BUTTON13, IPT_BUTTON14, IPT_BUTTON15, IPT_BUTTON16,
+  
+  	/* analog inputs */
+  	/* the "arg" field contains the default sensitivity expressed as a percentage */
+--- 48,54 ----
+  	IPT_JOYSTICKLEFT_UP, IPT_JOYSTICKLEFT_DOWN, IPT_JOYSTICKLEFT_LEFT, IPT_JOYSTICKLEFT_RIGHT,
+  	IPT_BUTTON1, IPT_BUTTON2, IPT_BUTTON3, IPT_BUTTON4,	/* action buttons */
+  	IPT_BUTTON5, IPT_BUTTON6, IPT_BUTTON7, IPT_BUTTON8, IPT_BUTTON9, IPT_BUTTON10,
+! 	IPT_BUTTON11, IPT_BUTTON12, IPT_BUTTON13, IPT_BUTTON14, IPT_BUTTON15, IPT_BUTTON16, IPT_BUTTON17, IPT_BUTTON18, IPT_BUTTON19, IPT_BUTTON20, IPT_BUTTON21, IPT_BUTTON22,
+  
+  	/* analog inputs */
+  	/* the "arg" field contains the default sensitivity expressed as a percentage */
+diff -crB -x .git mame4all-pi/src/input.h mame4all-pi-xinmo/src/input.h
+*** mame4all-pi/src/input.h	Wed Apr  9 17:06:45 2014
+--- mame4all-pi-xinmo/src/input.h	Sun Mar 30 11:09:25 2014
+***************
+*** 51,75 ****
+  	JOYCODE_1_BUTTON4,JOYCODE_1_BUTTON5,JOYCODE_1_BUTTON6,
+  	JOYCODE_1_BUTTON7,JOYCODE_1_BUTTON8,JOYCODE_1_BUTTON9,JOYCODE_1_BUTTON10,
+  	JOYCODE_1_BUTTON11,JOYCODE_1_BUTTON12,JOYCODE_1_BUTTON13,JOYCODE_1_BUTTON14,
+! 	JOYCODE_1_BUTTON15,JOYCODE_1_BUTTON16,
+  	JOYCODE_2_LEFT,JOYCODE_2_RIGHT,JOYCODE_2_UP,JOYCODE_2_DOWN,
+  	JOYCODE_2_BUTTON1,JOYCODE_2_BUTTON2,JOYCODE_2_BUTTON3,
+  	JOYCODE_2_BUTTON4,JOYCODE_2_BUTTON5,JOYCODE_2_BUTTON6,
+  	JOYCODE_2_BUTTON7,JOYCODE_2_BUTTON8,JOYCODE_2_BUTTON9,JOYCODE_2_BUTTON10,
+  	JOYCODE_2_BUTTON11,JOYCODE_2_BUTTON12,JOYCODE_2_BUTTON13,JOYCODE_2_BUTTON14,
+! 	JOYCODE_2_BUTTON15,JOYCODE_2_BUTTON16,
+  	JOYCODE_3_LEFT,JOYCODE_3_RIGHT,JOYCODE_3_UP,JOYCODE_3_DOWN,
+  	JOYCODE_3_BUTTON1,JOYCODE_3_BUTTON2,JOYCODE_3_BUTTON3,
+  	JOYCODE_3_BUTTON4,JOYCODE_3_BUTTON5,JOYCODE_3_BUTTON6,
+  	JOYCODE_3_BUTTON7,JOYCODE_3_BUTTON8,JOYCODE_3_BUTTON9,JOYCODE_3_BUTTON10,
+  	JOYCODE_3_BUTTON11,JOYCODE_3_BUTTON12,JOYCODE_3_BUTTON13,JOYCODE_3_BUTTON14,
+! 	JOYCODE_3_BUTTON15,JOYCODE_3_BUTTON16,
+  	JOYCODE_4_LEFT,JOYCODE_4_RIGHT,JOYCODE_4_UP,JOYCODE_4_DOWN,
+  	JOYCODE_4_BUTTON1,JOYCODE_4_BUTTON2,JOYCODE_4_BUTTON3,
+  	JOYCODE_4_BUTTON4,JOYCODE_4_BUTTON5,JOYCODE_4_BUTTON6,
+  	JOYCODE_4_BUTTON7,JOYCODE_4_BUTTON8,JOYCODE_4_BUTTON9,JOYCODE_4_BUTTON10,
+  	JOYCODE_4_BUTTON11,JOYCODE_4_BUTTON12,JOYCODE_4_BUTTON13,JOYCODE_4_BUTTON14,
+! 	JOYCODE_4_BUTTON15,JOYCODE_4_BUTTON16,
+  	JOYCODE_1_MOUSE1, JOYCODE_1_MOUSE2, JOYCODE_1_MOUSE3,
+  #define __code_joy_first JOYCODE_1_LEFT
+  #define __code_joy_last JOYCODE_1_MOUSE3
+--- 51,79 ----
+  	JOYCODE_1_BUTTON4,JOYCODE_1_BUTTON5,JOYCODE_1_BUTTON6,
+  	JOYCODE_1_BUTTON7,JOYCODE_1_BUTTON8,JOYCODE_1_BUTTON9,JOYCODE_1_BUTTON10,
+  	JOYCODE_1_BUTTON11,JOYCODE_1_BUTTON12,JOYCODE_1_BUTTON13,JOYCODE_1_BUTTON14,
+! 	JOYCODE_1_BUTTON15,JOYCODE_1_BUTTON16, JOYCODE_1_BUTTON17,JOYCODE_1_BUTTON18,
+! 	JOYCODE_1_BUTTON19,JOYCODE_1_BUTTON20,JOYCODE_1_BUTTON21,JOYCODE_1_BUTTON22,
+  	JOYCODE_2_LEFT,JOYCODE_2_RIGHT,JOYCODE_2_UP,JOYCODE_2_DOWN,
+  	JOYCODE_2_BUTTON1,JOYCODE_2_BUTTON2,JOYCODE_2_BUTTON3,
+  	JOYCODE_2_BUTTON4,JOYCODE_2_BUTTON5,JOYCODE_2_BUTTON6,
+  	JOYCODE_2_BUTTON7,JOYCODE_2_BUTTON8,JOYCODE_2_BUTTON9,JOYCODE_2_BUTTON10,
+  	JOYCODE_2_BUTTON11,JOYCODE_2_BUTTON12,JOYCODE_2_BUTTON13,JOYCODE_2_BUTTON14,
+! 	JOYCODE_2_BUTTON15,JOYCODE_2_BUTTON16,JOYCODE_2_BUTTON17,JOYCODE_2_BUTTON18,
+! 	JOYCODE_2_BUTTON19,JOYCODE_2_BUTTON20,JOYCODE_2_BUTTON21,JOYCODE_2_BUTTON22,
+  	JOYCODE_3_LEFT,JOYCODE_3_RIGHT,JOYCODE_3_UP,JOYCODE_3_DOWN,
+  	JOYCODE_3_BUTTON1,JOYCODE_3_BUTTON2,JOYCODE_3_BUTTON3,
+  	JOYCODE_3_BUTTON4,JOYCODE_3_BUTTON5,JOYCODE_3_BUTTON6,
+  	JOYCODE_3_BUTTON7,JOYCODE_3_BUTTON8,JOYCODE_3_BUTTON9,JOYCODE_3_BUTTON10,
+  	JOYCODE_3_BUTTON11,JOYCODE_3_BUTTON12,JOYCODE_3_BUTTON13,JOYCODE_3_BUTTON14,
+! 	JOYCODE_3_BUTTON15,JOYCODE_3_BUTTON16,JOYCODE_3_BUTTON17,JOYCODE_3_BUTTON18,
+! 	JOYCODE_3_BUTTON19,JOYCODE_3_BUTTON20,JOYCODE_3_BUTTON21,JOYCODE_3_BUTTON22,
+  	JOYCODE_4_LEFT,JOYCODE_4_RIGHT,JOYCODE_4_UP,JOYCODE_4_DOWN,
+  	JOYCODE_4_BUTTON1,JOYCODE_4_BUTTON2,JOYCODE_4_BUTTON3,
+  	JOYCODE_4_BUTTON4,JOYCODE_4_BUTTON5,JOYCODE_4_BUTTON6,
+  	JOYCODE_4_BUTTON7,JOYCODE_4_BUTTON8,JOYCODE_4_BUTTON9,JOYCODE_4_BUTTON10,
+  	JOYCODE_4_BUTTON11,JOYCODE_4_BUTTON12,JOYCODE_4_BUTTON13,JOYCODE_4_BUTTON14,
+! 	JOYCODE_4_BUTTON15,JOYCODE_4_BUTTON16,JOYCODE_4_BUTTON17,JOYCODE_4_BUTTON18,
+! 	JOYCODE_4_BUTTON19,JOYCODE_4_BUTTON20,JOYCODE_4_BUTTON21,JOYCODE_4_BUTTON22,
+  	JOYCODE_1_MOUSE1, JOYCODE_1_MOUSE2, JOYCODE_1_MOUSE3,
+  #define __code_joy_first JOYCODE_1_LEFT
+  #define __code_joy_last JOYCODE_1_MOUSE3
+diff -crB -x .git mame4all-pi/src/rpi/input.cpp mame4all-pi-xinmo/src/rpi/input.cpp
+*** mame4all-pi/src/rpi/input.cpp	Wed Apr  9 17:06:48 2014
+--- mame4all-pi-xinmo/src/rpi/input.cpp	Sun Mar 30 09:37:01 2014
+***************
+*** 307,333 ****
+          case 8:
+              val=GP2X_9; break;
+  			break;
+! 		case 9:
+              val=GP2X_10; break;
+  			break;
+! 		case 10:
+              val=GP2X_11; break;
+  			break;
+! 		case 11:
+              val=GP2X_12; break;
+  			break;
+! 		case 12:
+              val=GP2X_13; break;
+  			break;
+! 		case 13:
+              val=GP2X_14; break;
+  			break;
+! 		case 14:
+              val=GP2X_15; break;
+  			break;
+! 		case 15:
+              val=GP2X_16; break;
+  			break;
+          default:
+              return;
+      }
+--- 307,351 ----
+          case 8:
+              val=GP2X_9; break;
+  			break;
+! 	case 9:
+              val=GP2X_10; break;
+  			break;
+! 	case 10:
+              val=GP2X_11; break;
+  			break;
+! 	case 11:
+              val=GP2X_12; break;
+  			break;
+! 	case 12:
+              val=GP2X_13; break;
+  			break;
+! 	case 13:
+              val=GP2X_14; break;
+  			break;
+! 	case 14:
+              val=GP2X_15; break;
+  			break;
+! 	case 15:
+              val=GP2X_16; break;
+  			break;
++ 	case 16:
++             val=GP2X_17; break;
++ 			break;
++ 	case 17:
++             val=GP2X_18; break;
++ 			break;
++ 	case 18:
++             val=GP2X_19; break;
++ 			break;
++ 	case 19:
++             val=GP2X_20; break;
++ 			break;
++ 	case 20:
++             val=GP2X_21; break;
++ 			break;
++ 	case 21:
++             val=GP2X_22; break;
++ 			break;
+          default:
+              return;
+      }
+***************
+*** 456,462 ****
+  
+  #define MAX_JOY 256
+  #define MAX_JOY_NAME_LEN 40
+! #define MAX_BUTTONS 16
+  
+  static struct JoystickInfo joylist[MAX_JOY] =
+  {
+--- 474,480 ----
+  
+  #define MAX_JOY 256
+  #define MAX_JOY_NAME_LEN 40
+! #define MAX_BUTTONS 22
+  
+  static struct JoystickInfo joylist[MAX_JOY] =
+  {
+***************
+*** 489,494 ****
+--- 507,518 ----
+  	{ JOYCODE(1,0,14,0),JOYCODE_1_BUTTON14 },
+  	{ JOYCODE(1,0,15,0),JOYCODE_1_BUTTON15 },
+  	{ JOYCODE(1,0,16,0),JOYCODE_1_BUTTON16 },
++ 	{ JOYCODE(1,0,17,0),JOYCODE_1_BUTTON17 },
++ 	{ JOYCODE(1,0,18,0),JOYCODE_1_BUTTON18 },
++ 	{ JOYCODE(1,0,19,0),JOYCODE_1_BUTTON19 },
++ 	{ JOYCODE(1,0,20,0),JOYCODE_1_BUTTON20 },
++ 	{ JOYCODE(1,0,21,0),JOYCODE_1_BUTTON21 },
++ 	{ JOYCODE(1,0,22,0),JOYCODE_1_BUTTON22 },
+  	{ JOYCODE(1,0,1,1),	JOYCODE_1_MOUSE1 },
+  	{ JOYCODE(1,0,2,1),	JOYCODE_1_MOUSE2 },
+  	{ JOYCODE(1,0,3,1),	JOYCODE_1_MOUSE3 },
+***************
+*** 512,517 ****
+--- 536,547 ----
+  	{ JOYCODE(2,0,14,0),JOYCODE_2_BUTTON14 },
+  	{ JOYCODE(2,0,15,0),JOYCODE_2_BUTTON15 },
+  	{ JOYCODE(2,0,16,0),JOYCODE_2_BUTTON16 },
++ 	{ JOYCODE(2,0,17,0),JOYCODE_2_BUTTON17 },
++ 	{ JOYCODE(2,0,18,0),JOYCODE_2_BUTTON18 },
++ 	{ JOYCODE(2,0,19,0),JOYCODE_2_BUTTON19 },
++ 	{ JOYCODE(2,0,20,0),JOYCODE_2_BUTTON20 },
++ 	{ JOYCODE(2,0,21,0),JOYCODE_2_BUTTON21 },
++ 	{ JOYCODE(2,0,22,0),JOYCODE_2_BUTTON22 },
+  	{ JOYCODE(3,1,1,1),	JOYCODE_3_LEFT },
+  	{ JOYCODE(3,1,1,2),	JOYCODE_3_RIGHT },
+  	{ JOYCODE(3,1,2,1),	JOYCODE_3_UP },
+***************
+*** 532,537 ****
+--- 562,573 ----
+  	{ JOYCODE(3,0,14,0),JOYCODE_3_BUTTON14 },
+  	{ JOYCODE(3,0,15,0),JOYCODE_3_BUTTON15 },
+  	{ JOYCODE(3,0,16,0),JOYCODE_3_BUTTON16 },
++ 	{ JOYCODE(3,0,17,0),JOYCODE_3_BUTTON17 },
++ 	{ JOYCODE(3,0,18,0),JOYCODE_3_BUTTON18 },
++ 	{ JOYCODE(3,0,19,0),JOYCODE_3_BUTTON19 },
++ 	{ JOYCODE(3,0,20,0),JOYCODE_3_BUTTON20 },
++ 	{ JOYCODE(3,0,21,0),JOYCODE_3_BUTTON21 },
++ 	{ JOYCODE(3,0,22,0),JOYCODE_3_BUTTON22 },
+  	{ JOYCODE(4,1,1,1),	JOYCODE_4_LEFT },
+  	{ JOYCODE(4,1,1,2),	JOYCODE_4_RIGHT },
+  	{ JOYCODE(4,1,2,1),	JOYCODE_4_UP },
+***************
+*** 552,557 ****
+--- 588,599 ----
+  	{ JOYCODE(4,0,14,0),JOYCODE_4_BUTTON14 },
+  	{ JOYCODE(4,0,15,0),JOYCODE_4_BUTTON15 },
+  	{ JOYCODE(4,0,16,0),JOYCODE_4_BUTTON16 },
++ 	{ JOYCODE(4,0,17,0),JOYCODE_4_BUTTON17 },
++ 	{ JOYCODE(4,0,18,0),JOYCODE_4_BUTTON18 },
++ 	{ JOYCODE(4,0,19,0),JOYCODE_4_BUTTON19 },
++ 	{ JOYCODE(4,0,20,0),JOYCODE_4_BUTTON20 },
++ 	{ JOYCODE(4,0,21,0),JOYCODE_4_BUTTON21 },
++ 	{ JOYCODE(4,0,22,0),JOYCODE_4_BUTTON22 },
+  	{ 0,0 }
+  };
+  
+***************
+*** 658,663 ****
+--- 700,711 ----
+  		case 13: return ExKey & GP2X_14; break;
+  		case 14: return ExKey & GP2X_15; break;
+  		case 15: return ExKey & GP2X_16; break;
++ 		case 16: return ExKey & GP2X_17; break;
++ 		case 17: return ExKey & GP2X_18; break;
++ 		case 18: return ExKey & GP2X_19; break;
++ 		case 19: return ExKey & GP2X_20; break;
++ 		case 20: return ExKey & GP2X_21; break;
++ 		case 21: return ExKey & GP2X_22; break;
+  		default: break;
+  	}
+  	return 0; 
+diff -crB -x .git mame4all-pi/src/rpi/minimal.h mame4all-pi-xinmo/src/rpi/minimal.h
+*** mame4all-pi/src/rpi/minimal.h	Wed Apr  9 17:06:48 2014
+--- mame4all-pi-xinmo/src/rpi/minimal.h	Sun Mar 30 09:17:16 2014
+***************
+*** 43,49 ****
+          GP2X_1=1<<4,    GP2X_2=1<<5, 	GP2X_3=1<<6, 	GP2X_4=1<<7,
+  		GP2X_5=1<<8,	GP2X_6=1<<9, 	GP2X_7=1<<10,	GP2X_8=1<<11, GP2X_9=1<<12,
+          GP2X_10=1<<13,	GP2X_11=1<<14, 	GP2X_12=1<<15, 	GP2X_13=1<<16, 
+! 		GP2X_14=1<<17, 	GP2X_15=1<<18, 	GP2X_16=1<<19 };
+  
+  #define TICKS_PER_SEC 1000000
+                                              
+--- 43,50 ----
+          GP2X_1=1<<4,    GP2X_2=1<<5, 	GP2X_3=1<<6, 	GP2X_4=1<<7,
+  		GP2X_5=1<<8,	GP2X_6=1<<9, 	GP2X_7=1<<10,	GP2X_8=1<<11, GP2X_9=1<<12,
+          GP2X_10=1<<13,	GP2X_11=1<<14, 	GP2X_12=1<<15, 	GP2X_13=1<<16, 
+! 		GP2X_14=1<<17, 	GP2X_15=1<<18, 	GP2X_16=1<<19 , GP2X_17=1<<20, GP2X_18=1<<21, GP2X_19=1<<22,
+! 	GP2X_20=1<<23, GP2X_21=1<<24, GP2X_22=1<<25};
+  
+  #define TICKS_PER_SEC 1000000
+                                              
